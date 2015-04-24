@@ -11,6 +11,7 @@ Range         = require('./lib/range')
 Parchment     = require('./core/document/parchment')
 
 require('./core/document/base')
+require('./core/document/format')
 
 
 class Quill extends EventEmitter2

@@ -136,7 +136,7 @@ describe('TreeList', ->
       @list.append(@a, @b, @c)
       @list.forEachAt(3, 3, @spy.callback)
       expect(@spy.callback.calls.count()).toEqual(1)
-      expect(@spy.callback.calls.first().args).toEqual([0, 3, @b])
+      expect(@spy.callback.calls.first().args).toEqual([@b, 0, 3])
     )
 
     it('forEachAt partial nodes', ->
@@ -144,8 +144,8 @@ describe('TreeList', ->
       @list.forEachAt(1, 3, @spy.callback)
       expect(@spy.callback.calls.count()).toEqual(2)
       calls = @spy.callback.calls.all()
-      expect(calls[0].args).toEqual([1, 2, @a])
-      expect(calls[1].args).toEqual([0, 1, @b])
+      expect(calls[0].args).toEqual([@a, 1, 2])
+      expect(calls[1].args).toEqual([@b, 0, 1])
     )
 
     it('forEachAt partial nodes', ->
@@ -153,16 +153,16 @@ describe('TreeList', ->
       @list.forEachAt(1, 7, @spy.callback)
       expect(@spy.callback.calls.count()).toEqual(3)
       calls = @spy.callback.calls.all()
-      expect(calls[0].args).toEqual([1, 2, @a])
-      expect(calls[1].args).toEqual([0, 3, @b])
-      expect(calls[2].args).toEqual([0, 2, @c])
+      expect(calls[0].args).toEqual([@a, 1, 2])
+      expect(calls[1].args).toEqual([@b, 0, 3])
+      expect(calls[2].args).toEqual([@c, 0, 2])
     )
 
     it('forEachAt at part of single node', ->
       @list.append(@a, @b, @c)
       @list.forEachAt(4, 1, @spy.callback)
       expect(@spy.callback.calls.count()).toEqual(1)
-      expect(@spy.callback.calls.first().args).toEqual([1, 1, @b])
+      expect(@spy.callback.calls.first().args).toEqual([@b, 1, 1])
     )
   )
 )
