@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Parchment Demo
+    link(rel='stylesheet', type='text/css', href='styles/style.css')
+    meta(charset='utf-8')
+
+  body
+    #editor-wrapper
+      #editor-container
+        p One
+        p Two
+
+    script(type='text/javascript', src='../quill.js')
+    script(type='text/javascript').
+      var container = document.querySelector('#editor-container');
+      container.innerHTML = container.innerHTML.replace(/\s+/g, '');
+      var parchment = new Quill.Parchment(container);
